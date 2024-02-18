@@ -27,3 +27,16 @@ echo "<br>";
 echo $person1['age'];  // Output: 30
 echo "<br>";
 echo $person1['city']; // Output: New York
+echo "<br>";
+
+// menetapkan nilai atau mengganti nilai array associative
+$person1['name'] = 'Alice';
+$person1['age'] = 25;
+$person1['city'] = 'Los Angeles';
+// hasilnya
+echo $person1['name']; // Output: Alice
+echo "<br>";
+echo $person1['age'];  // Output: 25
+echo "<br>";
+echo $person1['city']; // Output: Los Angeles
+
