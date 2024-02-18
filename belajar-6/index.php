@@ -70,3 +70,8 @@ $user = [
     ]
 ];
 echo $user['profile']['name']; // Output: John Doe
+echo "<br>";
+
+// konversi data array associative kedalam format JSON
+$json_data_user = json_encode($user);
+echo $json_data_user;
