@@ -51,3 +51,9 @@ echo "<br>";
 unset($person1['age']);
 // hasilnya
 print_r($person1);
+echo "<br>";
+
+// iterasi pada array associative
+foreach ($person1 as $key => $value) {
+    echo $key . ': ' . $value . '<br>';
+}
