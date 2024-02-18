@@ -20,3 +20,10 @@ $person2 = [
     'age' => 30,
     'city' => 'New York'
 ];
+
+// Akses array associative
+echo $person1['name']; // Output: John
+echo "<br>";
+echo $person1['age'];  // Output: 30
+echo "<br>";
+echo $person1['city']; // Output: New York
