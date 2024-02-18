@@ -45,3 +45,9 @@ echo "<br>";
 $person1['gender'] = 'Female';
 // hasilnya
 print_r($person1);
+echo "<br>";
+
+// mengahapus elemen dari array associative
+unset($person1['age']);
+// hasilnya
+print_r($person1);
