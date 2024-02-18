@@ -57,3 +57,16 @@ echo "<br>";
 foreach ($person1 as $key => $value) {
     echo $key . ': ' . $value . '<br>';
 }
+echo "<br>";
+
+// penggunaan array associative dalam struktur data kompleks
+$user = [
+    'username' => 'john_doe',
+    'email' => 'john@example.com',
+    'profile' => [
+        'name' => 'John Doe',
+        'age' => 30,
+        'city' => 'New York'
+    ]
+];
+echo $user['profile']['name']; // Output: John Doe
