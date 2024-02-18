@@ -39,4 +39,9 @@ echo "<br>";
 echo $person1['age'];  // Output: 25
 echo "<br>";
 echo $person1['city']; // Output: Los Angeles
+echo "<br>";
 
+// menambahkan elemen baru kedalam array associative
+$person1['gender'] = 'Female';
+// hasilnya
+print_r($person1);
