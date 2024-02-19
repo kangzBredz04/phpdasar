@@ -1,3 +1,17 @@
+<?php
+// Cek apakah ada data di $_GET
+if (
+    !isset($_GET["kode"]) ||
+    !isset($_GET["nama"]) ||
+    !isset($_GET["harga"]) ||
+    !isset($_GET["stok"])
+) {
+    // kita redirect ke halaman data barang
+    header("Location: latihan1.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
