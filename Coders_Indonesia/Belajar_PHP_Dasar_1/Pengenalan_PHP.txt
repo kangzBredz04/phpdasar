@@ -1,0 +1,9 @@
+PHP adalah sebuah bahasa pemrograman di sisi server (Server Side Programming). 
+Dengan menggunakan PHP, Kita bisa membuat sebuah web, karena memang PHP dikhususkan untuk itu.
+
+Secara keseluruhan, PHP merupakan bahasa pemrograman yang ampuh dan fleksibel untuk pengembangan web. 
+Kesederhanaan dan komunitas yang besar membuatnya menjadi pilihan yang baik untuk programmer pemula maupun berpengalaman.
+
+Karena ini merupakan sebuah bahasa pemrograman di sisi server, PHP umum digunakan dengan konektivitas dengan
+database. Umumnya menggunakan MYSQL
+Di masa sekarang PHP sudah bisa juga terkoneksi dengan MongoDB, SQL Server dll.
