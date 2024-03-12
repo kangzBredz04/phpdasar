@@ -30,3 +30,18 @@ $userAge = 30;
 
 // Konstanta
 const PI = 3.14;
+
+// VARIABEL GLOBAL
+// Mendeklarasikan variabel global
+$globalVariable = "Hello, World!";
+
+// Mengakses variabel global di dalam fungsi
+function myFunction()
+{
+    global $globalVariable;
+    echo $globalVariable; // Output: Hello, World!
+}
+
+myFunction();
+
+
