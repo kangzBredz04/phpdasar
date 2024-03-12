@@ -52,20 +52,20 @@ myFunction();
 // $_SESSION: Menyimpan informasi tentang sesi pengguna.
 // $_COOKIE: Menyimpan informasi tentang cookie yang disimpan di browser pengguna.
 
-// Mendapatkan alamat IP pengguna
-$ipAddress = $_SERVER['REMOTE_ADDR'];
+// // Mendapatkan alamat IP pengguna
+// $ipAddress = $_SERVER['REMOTE_ADDR'];
 
-// Mendapatkan nama file yang sedang diakses
-$fileName = $_SERVER['SCRIPT_FILENAME'];
+// // Mendapatkan nama file yang sedang diakses
+// $fileName = $_SERVER['SCRIPT_FILENAME'];
 
-// Mendapatkan nilai dari formulir
-$userName = $_POST['username'];
+// // Mendapatkan nilai dari formulir
+// $userName = $_POST['username'];
 
-// Memulai sesi
-session_start();
+// // Memulai sesi
+// session_start();
 
-// Menyimpan nilai dalam sesi
-$_SESSION['userId'] = 123;
+// // Menyimpan nilai dalam sesi
+// $_SESSION['userId'] = 123;
 
-// Mendapatkan nilai dari cookie
-$cookieValue = $_COOKIE['myCookie'];
+// // Mendapatkan nilai dari cookie
+// $cookieValue = $_COOKIE['myCookie'];
