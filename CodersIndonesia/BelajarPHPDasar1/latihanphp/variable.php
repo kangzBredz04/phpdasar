@@ -44,4 +44,28 @@ function myFunction()
 
 myFunction();
 
+// VARIABEL SUPER GLOBAL
+// $_SERVER: Menyimpan informasi tentang server dan lingkungan web.
+// $_REQUEST: Menyimpan informasi tentang request HTTP, seperti data formulir dan parameter URL.
+// $_GET: Menyimpan informasi tentang parameter URL.
+// $_POST: Menyimpan informasi tentang data formulir yang dikirimkan dengan metode POST.
+// $_SESSION: Menyimpan informasi tentang sesi pengguna.
+// $_COOKIE: Menyimpan informasi tentang cookie yang disimpan di browser pengguna.
 
+// Mendapatkan alamat IP pengguna
+$ipAddress = $_SERVER['REMOTE_ADDR'];
+
+// Mendapatkan nama file yang sedang diakses
+$fileName = $_SERVER['SCRIPT_FILENAME'];
+
+// Mendapatkan nilai dari formulir
+$userName = $_POST['username'];
+
+// Memulai sesi
+session_start();
+
+// Menyimpan nilai dalam sesi
+$_SESSION['userId'] = 123;
+
+// Mendapatkan nilai dari cookie
+$cookieValue = $_COOKIE['myCookie'];
