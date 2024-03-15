@@ -32,3 +32,13 @@ echo "<hr>";
 foreach ($makanan as $m) {
     echo $m . "<br>";
 }
+
+echo "<hr>";
+// Menghapus isi array
+// Isi sebelum dihapus
+print_r($makanan);
+unset($makanan[1]);
+// Isi sesudah dihapus
+echo "<hr>";
+print_r($makanan);
+// fungsi print_r() untuk menampilkan array secara mentah (raw)
