@@ -42,3 +42,18 @@ unset($makanan[1]);
 echo "<hr>";
 print_r($makanan);
 // fungsi print_r() untuk menampilkan array secara mentah (raw)
+
+echo "<hr>";
+// Menambahkan isi array
+$hobi = ["Main bola", "Nge-game", "Olahraga"];
+// Menambahkan pada indeks ke 3
+$hobi[3] = "Membaca";
+print_r($hobi);
+// Menambahkan pada array terakhir
+echo "<hr>";
+$hobi[] = "Travelling";
+print_r($hobi);
+// Jika menambahkan pada indeks yang sudah ada isinya, maka isinya akan digantikan oleh yang baru
+echo "<hr>";
+$hobi[2] = "Jajan";
+print_r($hobi);
