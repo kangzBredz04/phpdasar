@@ -69,3 +69,11 @@ print_r($hobi);
 echo "<hr>";
 array_unshift($hobi, "Menyanyi");
 print_r($hobi);
+
+// Menggabungkan dua array atau lebih menggunakan array_merge()
+echo "<hr>";
+$warnaTerang = ["Kuning", "Putih", "Hijau"];
+$warnaGelap = ["Hitam", "Cokelat", "Merah"];
+print_r(array_merge($warnaTerang, $warnaGelap));
+echo "<hr>";
+print_r(array_merge($warnaTerang, $warnaGelap, ["Biru", "Abu-Abu"]));
