@@ -41,6 +41,10 @@ unset($makanan[1]);
 // Isi sesudah dihapus
 echo "<hr>";
 print_r($makanan);
+// Hapus belakang menggunakan fungsi array_pop
+echo "<hr>";
+array_pop($makanan);
+print_r($makanan);
 // fungsi print_r() untuk menampilkan array secara mentah (raw)
 
 echo "<hr>";
@@ -56,4 +60,12 @@ print_r($hobi);
 // Jika menambahkan pada indeks yang sudah ada isinya, maka isinya akan digantikan oleh yang baru
 echo "<hr>";
 $hobi[2] = "Jajan";
+print_r($hobi);
+// Menambahkan dengan fungsi array_push
+echo "<hr>";
+array_push($hobi, "Ngoding");
+print_r($hobi);
+// Menambahkan pada urutan pertama dengan fungsi array_unshift
+echo "<hr>";
+array_unshift($hobi, "Menyanyi");
 print_r($hobi);
