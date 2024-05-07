@@ -1,0 +1,17 @@
+{
+    "name": "wahyu/belajarphpmvc",
+    "description": "Belajar PHP MVC",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Wahyu\\Belajarphpmvc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wahyu",
+            "email": "wabredz1234@gmail.com"
+        }
+    ],
+    "require": {}
+}
