@@ -42,7 +42,7 @@ $result = $conn->query($sql);
 
 
     <table class="table table-striped">
-      <thead>
+      <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nama</th>
@@ -113,7 +113,7 @@ $result = $conn->query($sql);
     // Fungsi untuk pencarian secara realtime
     function searchMahasiswa() {
       // Ambil input dari search bar
-      var input, filter, table, tr, tdNama, tdNRP, i, txtNama, txtNRP;
+      var input, filter, table, tr, tdNama, tdNRP, tdEmail, tdJurusan, i, txtNama, txtNRP, txtEmail, txtJurusan;
       input = document.getElementById("searchInput");
       filter = input.value.toLowerCase();
       table = document.querySelector(".table tbody");
@@ -125,15 +125,22 @@ $result = $conn->query($sql);
 
       // Looping setiap row di tabel untuk mencocokkan kata kunci
       for (i = 0; i < tr.length; i++) {
-        tdNama = tr[i].getElementsByTagName("td")[1]; // Kolom Nama
-        tdNRP = tr[i].getElementsByTagName("td")[2];  // Kolom NRP
+        tdNama = tr[i].getElementsByTagName("td")[1];   // Kolom Nama
+        tdNRP = tr[i].getElementsByTagName("td")[2];    // Kolom NRP
+        tdEmail = tr[i].getElementsByTagName("td")[3];  // Kolom Email
+        tdJurusan = tr[i].getElementsByTagName("td")[4]; // Kolom Jurusan
 
-        if (tdNama || tdNRP) {
+        if (tdNama || tdNRP || tdEmail || tdJurusan) {
           txtNama = tdNama.textContent || tdNama.innerText;
           txtNRP = tdNRP.textContent || tdNRP.innerText;
+          txtEmail = tdEmail.textContent || tdEmail.innerText;
+          txtJurusan = tdJurusan.textContent || tdJurusan.innerText;
 
-          // Cek apakah teks Nama atau NRP mengandung kata kunci
-          if (txtNama.toLowerCase().indexOf(filter) > -1 || txtNRP.toLowerCase().indexOf(filter) > -1) {
+          // Cek apakah teks Nama, NRP, Email, atau Jurusan mengandung kata kunci
+          if (txtNama.toLowerCase().indexOf(filter) > -1 ||
+            txtNRP.toLowerCase().indexOf(filter) > -1 ||
+            txtEmail.toLowerCase().indexOf(filter) > -1 ||
+            txtJurusan.toLowerCase().indexOf(filter) > -1) {
             tr[i].style.display = ""; // Tampilkan baris jika cocok
             visibleRowCount++; // Tambah counter hasil pencarian
             tr[i].getElementsByTagName("th")[0].innerText = visibleRowCount; // Perbarui nomor urut
@@ -151,6 +158,7 @@ $result = $conn->query($sql);
         document.getElementById("noDataMessage").style.display = "none";
       }
     }
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
