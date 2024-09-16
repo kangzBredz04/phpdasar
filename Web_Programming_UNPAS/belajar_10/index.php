@@ -2,61 +2,17 @@
 // Memasukkan file koneksi database
 require 'db_connect.php';
 
-// Menyimpan data baru atau memperbarui data jika form disubmit
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = isset($_POST['id']) ? $_POST['id'] : null; // Untuk Update, kita butuh ID
-    $nama = $_POST['nama'];
-    $nrp = $_POST['nrp'];
-    $email = $_POST['email'];
-    $jurusan = $_POST['jurusan'];
-    $gambar = $_POST['gambar']; // Asumsi gambar berupa URL
-    
-    if ($id) {
-        // Query untuk update data mahasiswa
-        $sql_update = "UPDATE mahasiswa SET nama='$nama', nrp='$nrp', email='$email', jurusan='$jurusan', gambar='$gambar' WHERE id=$id";
-        if ($conn->query($sql_update) === TRUE) {
-            header("Location: " . $_SERVER['PHP_SELF']);
-            exit();
-        } else {
-            echo "Error: " . $sql_update . "<br>" . $conn->error;
-        }
-    } else {
-        // Query untuk menambahkan data mahasiswa baru
-        $sql_insert = "INSERT INTO mahasiswa (nama, nrp, email, jurusan, gambar) 
-                       VALUES ('$nama', '$nrp', '$email', '$jurusan', '$gambar')";
-        if ($conn->query($sql_insert) === TRUE) {
-            header("Location: " . $_SERVER['PHP_SELF']);
-            exit();
-        } else {
-            echo "Error: " . $sql_insert . "<br>" . $conn->error;
-        }
-    }
-}
-
-// Menghapus data mahasiswa jika ada parameter 'delete_id'
-if (isset($_GET['delete_id'])) {
-    $delete_id = $_GET['delete_id'];
-    $sql_delete = "DELETE FROM mahasiswa WHERE id=$delete_id";
-    if ($conn->query($sql_delete) === TRUE) {
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
-    } else {
-        echo "Error: " . $sql_delete . "<br>" . $conn->error;
-    }
-}
-
 // Query untuk mengambil data mahasiswa
 $sql = "SELECT * FROM mahasiswa";
 $result = $conn->query($sql);
 ?>
-
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Demo with PHP and MySQL</title>
+    <title>Daftar Mahasiswa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
@@ -107,46 +63,8 @@ $result = $conn->query($sql);
     </table>
 </div>
 
-<!-- Bootstrap Modal untuk Form Tambah/Update Mahasiswa -->
-<div class="modal fade" id="tambahMahasiswaModal" tabindex="-1" aria-labelledby="tambahMahasiswaModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tambahMahasiswaModalLabel">Tambah Mahasiswa</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" id="mahasiswaForm">
-          <input type="hidden" name="id" id="mahasiswaId">
-          <div class="mb-3">
-            <label for="nama" class="form-label">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" required>
-          </div>
-          <div class="mb-3">
-            <label for="nrp" class="form-label">NRP</label>
-            <input type="text" class="form-control" id="nrp" name="nrp" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="jurusan" class="form-label">Jurusan</label>
-            <input type="text" class="form-control" id="jurusan" name="jurusan" required>
-          </div>
-          <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar (URL)</label>
-            <input type="text" class="form-control" id="gambar" name="gambar">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Include modal form dari file form_modal.php -->
+<?php include 'form_modal.php'; ?>
 
 <script>
 // Fungsi untuk mengisi form modal ketika tombol Update diklik
@@ -170,7 +88,7 @@ function resetForm() {
 // Fungsi untuk konfirmasi penghapusan data
 function confirmDelete(id) {
     if (confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')) {
-        window.location.href = "?delete_id=" + id;
+        window.location.href = "process.php?delete_id=" + id;
     }
 }
 </script>
