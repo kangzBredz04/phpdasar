@@ -19,11 +19,16 @@ $result = $conn->query($sql);
 
 <div class="container mt-5">
     <h2 class="mb-4">Daftar Mahasiswa</h2>
-    
-    <!-- Button Tambah Mahasiswa -->
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#tambahMahasiswaModal" onclick="resetForm()">
-      Tambah Mahasiswa
-    </button>
+
+    <!-- Flexbox container untuk search bar dan tombol Tambah -->
+    <div class="d-flex justify-content-between mb-3">
+        <!-- Button Tambah Mahasiswa -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahMahasiswaModal" onclick="resetForm()">
+            Tambah Mahasiswa
+        </button>
+        <!-- Search bar -->
+        <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari mahasiswa..." oninput="searchMahasiswa()">
+    </div>
 
     <table class="table table-striped">
       <thead>
@@ -89,6 +94,36 @@ function resetForm() {
 function confirmDelete(id) {
     if (confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')) {
         window.location.href = "process.php?delete_id=" + id;
+    }
+}
+
+// Fungsi untuk pencarian secara realtime
+function searchMahasiswa() {
+    // Ambil input dari search bar
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    table = document.querySelector(".table tbody");
+    tr = table.getElementsByTagName("tr");
+
+    // Looping setiap row di tabel untuk mencocokkan kata kunci
+    for (i = 0; i < tr.length; i++) {
+        // Ambil semua kolom dalam baris
+        tdNama = tr[i].getElementsByTagName("td")[0]; // kolom Nama
+        tdNRP = tr[i].getElementsByTagName("td")[1];  // kolom NRP
+        
+        if (tdNama || tdNRP) {
+            // Ambil teks dari kolom Nama dan NRP
+            txtNama = tdNama.textContent || tdNama.innerText;
+            txtNRP = tdNRP.textContent || tdNRP.innerText;
+            
+            // Cek apakah teks Nama atau NRP mengandung kata kunci
+            if (txtNama.toLowerCase().indexOf(filter) > -1 || txtNRP.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = ""; // tampilkan baris jika cocok
+            } else {
+                tr[i].style.display = "none"; // sembunyikan baris jika tidak cocok
+            }
+        }       
     }
 }
 </script>
